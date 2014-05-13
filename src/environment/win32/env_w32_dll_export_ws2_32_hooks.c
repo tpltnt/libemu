@@ -369,7 +369,7 @@ int recv(
 	POP_DWORD(c, &flags);
 
 	uint32_t xlen = len;
-	if (xlen < 0 || xlen > 4096)
+	if (xlen > 4096)
 	{
 
 		printf("BUG\n");
