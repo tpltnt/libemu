@@ -5,6 +5,7 @@
  *
  *
  * Copyright (C) 2008  Paul Baecher & Markus Koetter
+ * Copyright (C) 2016  tpltnt
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -35,6 +36,10 @@
 struct emu_stack *emu_stack_new(void)
 {
 	struct emu_stack *es = malloc(sizeof(struct emu_stack));
+	if (NULL == es)
+	{
+		return NULL;
+	}
 	memset(es, 0, sizeof(struct emu_stack));
 	return es;
 }
