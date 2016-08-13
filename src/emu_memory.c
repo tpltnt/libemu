@@ -5,6 +5,7 @@
  *
  *
  * Copyright (C) 2007  Paul Baecher & Markus Koetter
+ * Copyright (C) 2016  tpltnt
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -368,6 +369,10 @@ int32_t emu_memory_read_string(struct emu_memory *m, uint32_t addr, struct emu_s
 	}
 
 	s->data = malloc(i + 1);
+	if (NULL == s->data)
+	{
+		return -1;
+	}
 	memset(s->data, 0, i + 1);
 	s->size = i;
 
