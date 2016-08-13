@@ -5,6 +5,7 @@
  *
  *
  * Copyright (C) 2007  Paul Baecher & Markus Koetter
+ * Copyright (C) 2016  tpltnt
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -209,6 +210,11 @@ void emu_cpu_debug_print(struct emu_cpu *c)
 
 	char *fmsg;
 	fmsg = (char *)malloc(32*3+1);
+	if (NULL == fmsg)
+	{
+		logDebug(c->emu, "allocating memory failed in emu_cpu_debug_print(struct emu_cpu *c)");
+		return;
+	}
 	memset(fmsg, 0, 32*3+1);
 	int i;
 	for ( i=0;i<32;i++ )
