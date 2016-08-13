@@ -5,6 +5,7 @@
  *
  *
  * Copyright (C) 2007  Paul Baecher & Markus Koetter
+ * Copyright (C) 2016  tpltnt
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -75,6 +76,10 @@
 struct instr_vertex *instr_vertex_new(uint32_t theeip, const char *instr_string)
 {
 	struct instr_vertex *iv = (struct instr_vertex *)malloc(sizeof(struct instr_vertex));
+	if (NULL == iv)
+	{
+		return NULL;
+	}
 	memset(iv, 0, sizeof(struct instr_vertex));
 	iv->eip = theeip;
 	iv->instr_string = emu_string_new();
@@ -91,6 +96,10 @@ void instr_vertex_free(struct instr_vertex *iv)
 struct instr_vertex *instr_vertex_copy(struct instr_vertex *from)
 {
 	struct instr_vertex *iv = (struct instr_vertex *)malloc(sizeof(struct instr_vertex));
+	if (NULL == iv)
+	{
+		return NULL;
+	}
 	memset(iv, 0, sizeof(struct instr_vertex));
 	iv->eip = from->eip;
 	iv->instr_string = emu_string_new();
