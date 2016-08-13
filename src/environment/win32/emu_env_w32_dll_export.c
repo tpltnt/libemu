@@ -5,6 +5,7 @@
  *
  *
  * Copyright (C) 2007  Paul Baecher & Markus Koetter
+ * Copyright (C) 2016  tpltnt
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -52,6 +53,10 @@
 struct emu_env_w32_dll_export *emu_env_w32_dll_export_new(void)
 {
 	struct emu_env_w32_dll_export *exp = (struct emu_env_w32_dll_export *)malloc(sizeof(struct emu_env_w32_dll_export));
+	if (NULL == exp)
+	{
+		return NULL;
+	}
 	memset(exp,0,sizeof(struct emu_env_w32_dll_export));
 	return exp;
 }
