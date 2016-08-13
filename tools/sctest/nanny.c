@@ -9,6 +9,10 @@
 struct nanny *nanny_new(void)
 {
 	struct nanny *na = malloc(sizeof(struct nanny));
+	if (NULL == na)
+	{
+		return NULL;
+	}
 	memset(na, 0, sizeof(struct nanny));
 
 	na->files = emu_hashtable_new(16, emu_hashtable_ptr_hash, emu_hashtable_ptr_cmp);
@@ -19,6 +23,10 @@ struct nanny *nanny_new(void)
 struct nanny_file *nanny_add_file(struct nanny *na, const char *path, uint32_t *emu_file, FILE *real_file)
 {
 	struct nanny_file *file = malloc(sizeof(struct nanny_file));
+	if (NULL == file)
+	{
+		return NULL;
+	}
 	memset(file, 0, sizeof(struct nanny_file));
 
 	*emu_file = rand();
