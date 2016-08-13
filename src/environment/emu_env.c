@@ -5,7 +5,8 @@
  *
  *
  * Copyright (C) 2008  Paul Baecher & Markus Koetter
- * 
+ * Copyright (C) 2016  tpltnt
+ *
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
@@ -34,6 +35,10 @@
 struct emu_env *emu_env_new(struct emu *e)
 {
 	struct emu_env *env = malloc(sizeof(struct emu_env));
+	if (NULL == env)
+	{
+		return NULL;
+	}
 	memset(env, 0, sizeof(struct emu_env));
 	env->env.lin = emu_env_linux_new(e);
 	env->env.win = emu_env_w32_new(e);
