@@ -368,6 +368,10 @@ int32_t emu_memory_read_string(struct emu_memory *m, uint32_t addr, struct emu_s
 		i++;
 	}
 
+	if (NULL == s)
+	{
+		return -1;
+	}
 	s->data = malloc(i + 1);
 	if (NULL == s->data)
 	{
