@@ -5,6 +5,7 @@
  *
  *
  * Copyright (C) 2007  Paul Baecher & Markus Koetter
+ * Copyright (C) 2016  tpltnt
  * 
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
@@ -40,6 +41,10 @@
 struct emu_track_and_source *emu_track_and_source_new(void)
 {
 	struct emu_track_and_source *et = (struct emu_track_and_source *)malloc(sizeof(struct emu_track_and_source));
+	if (NULL == et)
+	{
+		return NULL;
+	}
 	memset(et, 0, sizeof(struct emu_track_and_source));
 	et->track.reg[esp] = 0xffffffff;
 	return et;
@@ -185,6 +190,10 @@ void emu_tracking_info_diff(struct emu_tracking_info *a, struct emu_tracking_inf
 struct emu_tracking_info *emu_tracking_info_new(void)
 {
 	struct emu_tracking_info *eti = malloc(sizeof(struct emu_tracking_info));
+	if (NULL == eti)
+	{
+		return NULL;
+	}    
 	memset(eti, 0, sizeof(struct emu_tracking_info));
 	eti->reg[esp] = 0xffffffff;
 	return eti;
